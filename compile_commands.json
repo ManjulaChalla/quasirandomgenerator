@@ -1,0 +1,21 @@
+[
+    {
+        "command": "nvcc -c  -I../../../Common -m64 --std=c++11 -o quasirandomGenerator.o -D__CUDACC__=1 quasirandomGenerator.cpp",
+        "directory": "/home/tcs/Manjula_workspace/cuda-samples/Samples/5_Domain_Specific/quasirandomGenerator",
+        "file": "/home/tcs/Manjula_workspace/cuda-samples/Samples/5_Domain_Specific/quasirandomGenerator/quasirandomGenerator.cpp"
+    },
+    {
+        "command": "nvcc -c  -I../../../Common -m64 --std=c++11 -o quasirandomGenerator_gold.o -D__CUDACC__=1 quasirandomGenerator_gold.cpp",
+        "directory": "/home/tcs/Manjula_workspace/cuda-samples/Samples/5_Domain_Specific/quasirandomGenerator",
+        "file": "/home/tcs/Manjula_workspace/cuda-samples/Samples/5_Domain_Specific/quasirandomGenerator/quasirandomGenerator_gold.cpp"
+    },
+    {
+        "command": "nvcc -c  -I../../../Common -m64 --std=c++11 -o quasirandomGenerator_kernel.o -D__CUDACC__=1 quasirandomGenerator_kernel.cu",
+        "directory": "/home/tcs/Manjula_workspace/cuda-samples/Samples/5_Domain_Specific/quasirandomGenerator",
+        "file": "/home/tcs/Manjula_workspace/cuda-samples/Samples/5_Domain_Specific/quasirandomGenerator/quasirandomGenerator_kernel.cu"
+    },
+    {
+        "command": "nvcc  -m64 -o quasirandomGenerator quasirandomGenerator.o quasirandomGenerator_gold.o quasirandomGenerator_kernel.o -D__CUDACC__=1",
+        "directory": "/home/tcs/Manjula_workspace/cuda-samples/Samples/5_Domain_Specific/quasirandomGenerator"
+    }
+]
