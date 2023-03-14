@@ -37,7 +37,7 @@
 
 // Fast integer multiplication
 /*
-DPCT1064:1: Migrated __umul24 call is used in a macro definition and is not
+DPCT1064:31: Migrated __umul24 call is used in a macro definition and is not
 valid for all macro uses. Adjust the code.
 */
 #define MUL(a, b) sycl::mul24((unsigned int)a, (unsigned int)b)
@@ -77,13 +77,15 @@ static void quasirandomGeneratorKernel(float *d_Output,
 extern "C" void initTableGPU(
     unsigned int tableCPU[QRNG_DIMENSIONS][QRNG_RESOLUTION]) {
   /*
-  DPCT1003:2: Migrated API does not return error code. (*, 0) is inserted. You
+  DPCT1003:32: Migrated API does not return error code. (*, 0) is inserted. You
   may need to rewrite this code.
   */
-  dpct::get_default_queue()
+  checkCudaErrors(
+      (dpct::get_default_queue()
            .memcpy(c_Table.get_ptr(), tableCPU,
                    QRNG_DIMENSIONS * QRNG_RESOLUTION * sizeof(unsigned int))
-           .wait();
+           .wait(),
+       0));
 }
 
 // Host-side interface
@@ -107,7 +109,7 @@ extern "C" void quasirandomGeneratorGPU(float *d_Output, unsigned int seed,
                                      c_Table_acc_ct1);
         });
   });
-  //getLastCudaError("quasirandomGeneratorKernel() execution failed.\n");
+  getLastCudaError("quasirandomGeneratorKernel() execution failed.\n");
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -213,7 +215,7 @@ extern "C" void inverseCNDgpu(float *d_Output, unsigned int *d_Input,
       [=](sycl::nd_item<3> item_ct1) {
         inverseCNDKernel(d_Output, d_Input, N, item_ct1);
       });
-  //getLastCudaError("inverseCNDKernel() execution failed.\n");
+  getLastCudaError("inverseCNDKernel() execution failed.\n");
 }
 
 #endif
