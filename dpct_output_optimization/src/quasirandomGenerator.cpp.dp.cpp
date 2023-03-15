@@ -32,10 +32,9 @@
 // Utilities and system includes
 #include <helper_functions.h>
 #include <helper_cuda.h>
-
+using namespace sycl;
 #include "quasirandomGenerator_common.h"
 #include <cmath>
-using namespace sycl;
 
 ////////////////////////////////////////////////////////////////////////////////
 // CPU code
@@ -53,19 +52,17 @@ extern "C" double MoroInvCNDcpu(unsigned int p);
 // GPU code
 ////////////////////////////////////////////////////////////////////////////////
 extern "C" void initTableGPU(
-    unsigned int tableCPU[QRNG_DIMENSIONS][QRNG_RESOLUTION]);
+    unsigned int tableCPU[QRNG_DIMENSIONS][QRNG_RESOLUTION],sycl::queue q_ct1);
 extern "C" void quasirandomGeneratorGPU(float *d_Output, unsigned int seed,
-                                        unsigned int N);
+                                        unsigned int N,sycl::queue q_ct1);
 extern "C" void inverseCNDgpu(float *d_Output, unsigned int *d_Input,
-                              unsigned int N);
+                              unsigned int N,sycl::queue q_ct1);
 
 const int N = 1048576;
 
 int main(int argc, char **argv) {
-//  dpct::device_ext &dev_ct1 = dpct::get_current_device();
-  //sycl::queue &q_ct1 = dev_ct1.default_queue();
-   queue q_ct1{default_selector_v, property::queue::in_order()};
   // Start logs
+  sycl::queue q_ct1 = sycl::queue(sycl::default_selector_v);
   printf("%s Starting...\n\n", argv[0]);
 
   unsigned int tableCPU[QRNG_DIMENSIONS][QRNG_RESOLUTION];
@@ -85,11 +82,9 @@ int main(int argc, char **argv) {
   sdkCreateTimer(&hTimer);
 
   printf("Allocating GPU memory...\n");
-  /*
-  DPCT1003:3: Migrated API does not return error code. (*, 0) is inserted. You
-  may need to rewrite this code.
-  */
-  d_Output = sycl::malloc_device<float>(QRNG_DIMENSIONS * N, q_ct1);
+  
+  d_Output = sycl::malloc_device<float>(
+                       QRNG_DIMENSIONS * N, q_ct1);
 
   printf("Allocating CPU memory...\n");
   h_OutputGPU = (float *)malloc(QRNG_DIMENSIONS * N * sizeof(float));
@@ -97,36 +92,26 @@ int main(int argc, char **argv) {
   printf("Initializing QRNG tables...\n\n");
   initQuasirandomGenerator(tableCPU);
 
-  initTableGPU(tableCPU);
+  initTableGPU(tableCPU,q_ct1);
 
   printf("Testing QRNG...\n\n");
-  /*
-  DPCT1003:4: Migrated API does not return error code. (*, 0) is inserted. You
-  may need to rewrite this code.
-  */
-  q_ct1.memset(d_Output, 0, QRNG_DIMENSIONS * N * sizeof(float)).wait();
+ 
+  q_ct1.memset(d_Output, 0, QRNG_DIMENSIONS * N * sizeof(float))
+                       .wait();
   int numIterations = 20;
 
   for (int i = -1; i < numIterations; i++) {
     if (i == 0) {
-      /*
-      DPCT1003:5: Migrated API does not return error code. (*, 0) is inserted.
-      You may need to rewrite this code.
-      */
-      //q_ct1.queues_wait_and_throw();
+     
       q_ct1.wait_and_throw();
       sdkResetTimer(&hTimer);
       sdkStartTimer(&hTimer);
     }
 
-    quasirandomGeneratorGPU(d_Output, 0, N);
+    quasirandomGeneratorGPU(d_Output, 0, N,q_ct1);
   }
 
-  /*
-  DPCT1003:6: Migrated API does not return error code. (*, 0) is inserted. You
-  may need to rewrite this code.
-  */
-  //q_ct1.queues_wait_and_throw();
+  
   q_ct1.wait_and_throw();
   sdkStopTimer(&hTimer);
   gpuTime = sdkGetTimerValue(&hTimer) / (double)numIterations * 1e-3;
@@ -137,10 +122,7 @@ int main(int argc, char **argv) {
       QRNG_DIMENSIONS * N, 1, 128 * QRNG_DIMENSIONS);
 
   printf("\nReading GPU results...\n");
-  /*
-  DPCT1003:7: Migrated API does not return error code. (*, 0) is inserted. You
-  may need to rewrite this code.
-  */
+  
   q_ct1.memcpy(h_OutputGPU, d_Output, QRNG_DIMENSIONS * N * sizeof(float))
            .wait();
 
@@ -159,32 +141,22 @@ int main(int argc, char **argv) {
   printf("L1 norm: %E\n", sumDelta / sumRef);
 
   printf("\nTesting inverseCNDgpu()...\n\n");
-  /*
-  DPCT1003:8: Migrated API does not return error code. (*, 0) is inserted. You
-  may need to rewrite this code.
-  */
-  q_ct1.memset(d_Output, 0, QRNG_DIMENSIONS * N * sizeof(float)).wait();
+  
+  q_ct1.memset(d_Output, 0, QRNG_DIMENSIONS * N * sizeof(float))
+                       .wait();
 
   for (int i = -1; i < numIterations; i++) {
     if (i == 0) {
-      /*
-      DPCT1003:9: Migrated API does not return error code. (*, 0) is inserted.
-      You may need to rewrite this code.
-      */
-   //   q_ct1.queues_wait_and_throw();
+     
       q_ct1.wait_and_throw();
       sdkResetTimer(&hTimer);
       sdkStartTimer(&hTimer);
     }
 
-    inverseCNDgpu(d_Output, NULL, QRNG_DIMENSIONS * N);
+    inverseCNDgpu(d_Output, NULL, QRNG_DIMENSIONS * N,q_ct1);
   }
 
-  /*
-  DPCT1003:10: Migrated API does not return error code. (*, 0) is inserted. You
-  may need to rewrite this code.
-  */
-  //q_ct1.queues_wait_and_throw();
+ 
   q_ct1.wait_and_throw();
   sdkStopTimer(&hTimer);
   gpuTime = sdkGetTimerValue(&hTimer) / (double)numIterations * 1e-3;
@@ -195,10 +167,7 @@ int main(int argc, char **argv) {
       QRNG_DIMENSIONS * N, 1, 128);
 
   printf("Reading GPU results...\n");
-  /*
-  DPCT1003:11: Migrated API does not return error code. (*, 0) is inserted. You
-  may need to rewrite this code.
-  */
+  
   q_ct1.memcpy(h_OutputGPU, d_Output, QRNG_DIMENSIONS * N * sizeof(float))
            .wait();
 
@@ -220,10 +189,7 @@ int main(int argc, char **argv) {
   printf("Shutting down...\n");
   sdkDeleteTimer(&hTimer);
   free(h_OutputGPU);
-  /*
-  DPCT1003:12: Migrated API does not return error code. (*, 0) is inserted. You
-  may need to rewrite this code.
-  */
+  
   sycl::free(d_Output, q_ct1);
 
   exit(L1norm < 1e-6 ? EXIT_SUCCESS : EXIT_FAILURE);
