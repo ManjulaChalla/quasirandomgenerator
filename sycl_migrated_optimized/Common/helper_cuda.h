@@ -636,7 +636,7 @@ inline int ftoi(float value) {
 inline int _ConvertSMVer2Cores(int major, int minor) {
   // Defines for GPU Architecture types (using the SM version to determine
   // the # of cores per SM
-  typedef struct dpct_type_206563 {
+  typedef struct dpct_type_962194 {
     int SM;  // 0xMm (hexidecimal notation), M = SM Major version,
     // and m = SM minor version
     int Cores;
@@ -685,7 +685,7 @@ inline int _ConvertSMVer2Cores(int major, int minor) {
 inline const char* _ConvertSMVer2ArchName(int major, int minor) {
   // Defines for GPU Architecture types (using the SM version to determine
   // the GPU Arch name)
-  typedef struct dpct_type_141650 {
+  typedef struct dpct_type_197131 {
     int SM;  // 0xMm (hexidecimal notation), M = SM Major version,
     // and m = SM minor version
     const char* name;
