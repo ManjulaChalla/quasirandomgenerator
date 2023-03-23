@@ -83,7 +83,7 @@ If you receive an error message, troubleshoot the problem using the **Diagnostic
 
 You can run the programs for CPU and GPU. The commands indicate the device target.
 
-1. Run `02_sycl_migrated` for CPU and GPU.
+1. Run `02_sycl_migrated_optimized` for CPU and GPU.
     ```
     make run_cpu
     make run_gpu
@@ -133,21 +133,9 @@ You can submit build and run jobs through a Portable Bash Script (PBS). A job is
 
 ### Example Output
 
-The following example is for `02_sycl_migrated` for CPU on **Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz**.
+The following example is for `02_sycl_migrated_optimized` for CPU on **Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz**.
 ```
-16777216 elements
-threads per block  = 512
-Graph Launch iterations = 3
-[syclTaskFlowManual] Host callback final reduced sum = 0.996214
-[syclTaskFlowManual] Host callback final reduced sum = 0.996214
-[syclTaskFlowManual] Host callback final reduced sum = 0.996214
 
-Number of tasks(nodes) in the syclTaskFlow(graph) created manually = 7
-Cloned Graph Output..
-[syclTaskFlowManual] Host callback final reduced sum = 0.996214
-[syclTaskFlowManual] Host callback final reduced sum = 0.996214
-[syclTaskFlowManual] Host callback final reduced sum = 0.996214
-Elapsed Time of SYCL TaskFlow Manual : 504.690613 (ms)
 ```
 
 ## License
