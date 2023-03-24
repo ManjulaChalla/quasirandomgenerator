@@ -65,7 +65,7 @@ When working with the command-line interface (CLI), you should configure the one
    $ make
    ```
 
-   By default, this command sequence will build the `02_sycl_migrated` versions of the program.
+   By default, this command sequence will build the `02_sycl_migrated` version of the program.
 
 #### Troubleshooting
 
@@ -89,7 +89,7 @@ You can run the programs for CPU and GPU. The commands indicate the device targe
     make run_gpu
     ```
 
-### Build and Run the `simpleCudaGraphs` Sample in Intel® DevCloud
+### Build and Run the `quasirandomGenerator` Sample in Intel® DevCloud
 
 When running a sample in the Intel® DevCloud, you must specify the compute node (CPU, GPU, FPGA) and whether to run in batch or interactive mode. For more information, see the Intel® oneAPI Base Toolkit [Get Started Guide](https://devcloud.intel.com/oneapi/get_started/).
 
