@@ -4,7 +4,7 @@ SET(CMAKE_EXE_LINKER_FLAGS  "-pthread ${CMAKE_EXE_LINKER_FLAGS}")
 include_directories(${CMAKE_SOURCE_DIR}/02_sycl_migrated_optimized/Common/)
 include_directories(${CMAKE_SOURCE_DIR}/02_sycl_migrated_optimized/include/)
 
-add_executable (02_sycl_migrated_optimized Samples/5_Domain_Specific/5_Domain_Specific/quasirandomGenerator/quasirandomGenerator.cpp.dp.cpp quasirandomGenerator_gold.cpp quasirandomGenerator_kernel.dp.cpp)
+add_executable(02_sycl_migrated_optimized Samples/5_Domain_Specific/quasirandomGenerator/quasirandomGenerator.cpp.dp.cpp Samples/5_Domain_Specific/quasirandomGenerator/quasirandomGenerator_gold.cpp Samples/5_Domain_Specific/quasirandomGenerator/quasirandomGenerator_kernel.dp.cpp)
 target_link_libraries(02_sycl_migrated_optimized sycl)
 
 add_custom_target (run_cpu cd ${CMAKE_SOURCE_DIR}/02_sycl_migrated_optimized/ && ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/02_sycl_migrated_optimized)
