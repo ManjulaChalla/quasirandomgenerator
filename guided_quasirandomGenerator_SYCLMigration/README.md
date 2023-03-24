@@ -1,6 +1,6 @@
 ﻿# `QuasirandomGenerator` Sample
-
-The `QuasirandomGenerator` sample is based on the Niederreiter sequence, which is a type of low-discrepancy sequence that has better properties than pseudorandom sequences for certain applications, such as Monte Carlo integration.
+ 
+The `QuasirandomGenerator` sample implements Niederreiter Quasirandom Sequence Generator and Inverse Cumulative Normal Distribution functions for the generation of Standard Normal Distributions.
 
 | Property               | Description
 |:---                    |:---
@@ -12,7 +12,8 @@ The `QuasirandomGenerator` sample is based on the Niederreiter sequence, which i
 
 ## Purpose
 
-The sample shows the migration of simple explicit CUDA Graph API's such as cudaGraphCreate, cudaGraphAddMemcpyNode, cudaGraphClone etc, to SYCL equivalent API's using [Taskflow](https://github.com/taskflow/taskflow) programming Model. The parallel implementation demonstrates the use of CUDA Graph API's, CUDA streams, shared memory, cooperative groups and warp level primitives. 
+The sample is based on the Niederreiter sequence, which is a type of low-discrepancy sequence that has better properties than pseudorandom sequences for certain applications, such as Monte Carlo integration.
+
 
 This sample contains two versions in the following folders:
 
