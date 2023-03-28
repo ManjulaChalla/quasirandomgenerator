@@ -173,11 +173,11 @@ To run quasirandomGenerator SYCL migrated sample with CUDA NVIDIA backend we use
 3. Change to the sample directory.
 4. To compile the sample following command is used,
     ```
-    clang++ -fsycl -fsycl-targets=nvptx64-nvidia-cuda simpleCudaGraphs.cpp -I../../../Common/ -pthread -std=c++17 -o simplecg
+    clang++ -fsycl -fsycl-targets=nvptx64-nvidia-cuda quasirandomGenerator.cpp.dp.cpp  quasirandomGenerator_gold.cpp       quasirandomGenerator_kernel.dp.cpp -I../../../Common/ -o a.out
     ```
 5. Run the programs.
     ```
-    ./simplecg
+    ./a.out
     ```
 
 
