@@ -159,19 +159,27 @@ L1 norm: 8.461076E-08
 
 Shutting down...
 ```
-Build and Run the QuasirandomGenerator Sample on NVIDIA GPU
-To run quasirandomGenerator SYCL migrated sample with CUDA NVIDIA backend we use CLANG-LLVM compiler on Linux. Refer DPC++ LLVM(CLang-LLVM) to build and set-up the compiler.
+### Build and Run the `quasirandomGenerator` Sample on NVIDIA GPU
 
-Steps
-Open a terminal on a Linux* system.
-Download the samples.
-git clone https://github.com/oneapi-src/oneAPI-samples.git
-Change to the sample directory.
-To compile the sample following command is used,
-clang++ -fsycl -fsycl-targets=nvptx64-nvidia-cuda simpleCudaGraphs.cpp -I../../../Common/ -pthread -std=c++17 -o simplecg
-Run the programs.
-./simplecg
-Example Output
+To run quasirandomGenerator SYCL migrated sample with CUDA NVIDIA backend we use CLANG-LLVM compiler on Linux. Refer [DPC++ LLVM(CLang-LLVM)](https://www.intel.com/content/www/us/en/developer/articles/technical/compiling-sycl-with-different-gpus.html#:~:text=their%20short%20descriptions.-,DPC%2B%2B%2DLLVM%20(CLang%2DLLVM),-The%20Data%20Parallel) to build and set-up the compiler. 
+
+#### Steps
+
+1. Open a terminal on a Linux* system.
+2. Download the samples.
+    ```
+    git clone https://github.com/oneapi-src/oneAPI-samples.git
+    ```
+3. Change to the sample directory.
+4. To compile the sample following command is used,
+    ```
+    clang++ -fsycl -fsycl-targets=nvptx64-nvidia-cuda simpleCudaGraphs.cpp -I../../../Common/ -pthread -std=c++17 -o simplecg
+    ```
+5. Run the programs.
+    ```
+    ./simplecg
+    ```
+
 
 ## License
 Code samples are licensed under the MIT license. See
