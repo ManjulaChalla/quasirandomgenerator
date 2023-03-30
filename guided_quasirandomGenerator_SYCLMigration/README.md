@@ -68,13 +68,14 @@ For this sample, the Intel SYCLomatic Compatibility tool automatically migrates 
 
 SYCL has two kinds of queues that a programmer can create and use to submit kernels for execution:
 
-     In-order queues: Where kernels are executed in the order they were submitted to the queue.
+   In-order queues: Where kernels are executed in the order they were submitted to the queue.
  Out-of-order queues: Where kernels can be executed in an arbitrary order (subject to the dependency constraints among them).
 
 The choice to create an in-order or out-of-order queue is made at the queue construction time through the property sycl::property::queue::in_order(). By default, when no property is specified, the queue is out-of-order.
 
 The optimized code creates the queue as follows:
-         sycl::queue q_ct1 = sycl::queue(sycl::default_selector_v);
+        
+        sycl::queue q_ct1 = sycl::queue(sycl::default_selector_v);
 
 Since we changed the queue from in-order to out-of-order execution, it resulted in better performance.
 
