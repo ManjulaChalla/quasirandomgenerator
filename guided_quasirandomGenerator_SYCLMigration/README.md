@@ -1,13 +1,23 @@
 ﻿# `QuasirandomGenerator` Sample
  
-The `QuasirandomGenerator` sample implements Niederreiter Quasirandom Sequence Generator and Inverse Cumulative Normal Distribution functions for the generation of Standard Normal Distributions.
+## Prior knowledge
 
-| Property               | Description
-|:---                    |:---
-| What you will learn    | How to begin migrating CUDA to SYCL
-| Time to complete       | 15 minutes
+- [CUDA](https://docs.nvidia.com/cuda/cuda-c-programming-guide/) - Beginner
+- [SYCL](https://registry.khronos.org/SYCL/specs/sycl-2020/html/sycl-2020.html) - Beginner
+- [SYCLomatic Manual](https://github.com/oneapi-src/SYCLomatic#syclomatic)
 
->**Note**: This sample is based on the [quasirandomGenerator](https://github.com/NVIDIA/cuda-samples/tree/master/Samples/5_Domain_Specific/quasirandomGenerator) sample in the NVIDIA/cuda-samples GitHub repository.
+## Prerequisites
+
+| Property              | Description
+|:---                   |:---
+| OS                    | Ubuntu* 20.04
+| Hardware              | Skylake with GEN9 or newer
+| Software              | Intel® oneAPI DPC++/C++ Compiler
+
+## Source code
+
+- [CUDA](https://github.com/NVIDIA/cuda-samples/tree/master/Samples/5_Domain_Specific/quasirandomGenerator) - Source code 
+- [SYCL](https://github.com/ShwethaSelma/simpleCudaGraphs/tree/master/guided_simpleCudaGraphs_SYCLmigration) - Migrated Code
 
 
 ## Purpose
