@@ -1,18 +1,57 @@
 ﻿# `QuasirandomGenerator` Sample
  
-## Prior knowledge
+The `QuasirandomGenerator` sample implements Niederreiter Quasirandom Sequence Generator and Inverse Cumulative Normal Distribution functions for the generation of Standard Normal Distributions.
 
-- [CUDA](https://docs.nvidia.com/cuda/cuda-c-programming-guide/) - Beginner
-- [SYCL](https://registry.khronos.org/SYCL/specs/sycl-2020/html/sycl-2020.html) - Beginner
-- [SYCLomatic Manual](https://github.com/oneapi-src/SYCLomatic#syclomatic)
+ 
+The simpleCudaGraphs sample demonstrates the migration of CUDA Graph explicit API calls to SYCL using Taskflow programming model which manages a task dependency graph. This sample is implemented using SYCL* by migrating code from original CUDA source code and offloading computations to a GPU/CPU.
+
+| Property                  | Description
+|:---                       |:---
+| What you will learn       | How to begin migrating CUDA to SYCL
+| Time to complete          | 15 minutes
+
+## Purpose
+
+The sample is based on the Niederreiter sequence, which is a type of low-discrepancy sequence that has better properties than pseudorandom sequences for certain applications, such as Monte Carlo integration.
+
+We use Intel open-sources SYCLomatic migration tool which assists developers in porting CUDA code automatically to SYCL code. To finish the process, developers complete the rest of the coding manually and then tune to the desired level of performance for the target architecture.
+
+This sample contains two versions in the following folders:
+
+| Folder Name                   | Description
+|:---                           |:---
+| `01_dpct_output`              | Contains output of Intel® SYCLomatic Compatibility Tool used to migrate SYCL-compliant code from CUDA code. This SYCL code has some unmigrated code that has to be manually fixed to get full functionality. (The code does not functionally work as supplied.)
+| `02_sycl_migrated_optimized`            | Contains manually migrated SYCL code from CUDA code.
+
+### CUDA source code evaluation
+
+The simpleCudaGraphs sample demonstrates the usage of CUDA Graphs API’s by performing element reduction. The CUDA Graph API are demonstrated in two CUDA functions cudaGraphsManual() which uses explicit CUDA Graph APIs and cudaGraphsUsingStreamCapture() which uses stream capture APIs. Reduction is performed in two CUDA kernels reduce () and reduceFinal(). We only migrate the cudaGraphsManual() using SYCLomatic Tool and manually migrating the unmigrated code section using [Taskflow](https://github.com/taskflow/taskflow) Programming Model. We do not migrate cudaGraphsUsingStreamCapture() because CUDA Stream Capture APIs are not yet supported in SYCL.
+
+This sample is migrated from NVIDIA CUDA sample. See the [SimpleCudaGraphs](https://github.com/NVIDIA/cuda-samples/tree/v11.8/Samples/3_CUDA_Features/simpleCudaGraphs) sample in the NVIDIA/cuda-samples GitHub.
+
+### Workflow For CUDA to SYCL migration
+
+Refer [Workflow](https://www.intel.com/content/www/us/en/developer/tools/oneapi/training/cuda-sycl-migration-workflow.html#gs.s2njvh) for details.
 
 ## Prerequisites
 
-| Property              | Description
-|:---                   |:---
-| OS                    | Ubuntu* 20.04
-| Hardware              | SYCL compatible hardware
-| Software              | open source oneAPI DPC++/C++ Compiler
+| Optimized for              | Description
+|:---                        |:---
+| OS                         | Ubuntu* 20.04
+| Hardware                   | SYCL compatible hardware
+| Software                   | open source oneAPI DPC++/C++ Compiler
+
+## Key Implementation Details
+
+This sample demonstrates the migration of the following prominent CUDA features: 
+- CUDA Graph APIs
+- CUDA Stream Capture
+- Shared memory
+- CUDA streams 
+- Cooperative groups
+- Warp level primitives
+
+SYCL simpleCudaGraphs sample performs reduction operarion to obtain the sum value from 16777216 number of elements in two different computational kernels reduce and reduceFinal. These kernels are scheduled through taskflow which develops a simple and powerful task programming model to enable efficient implementations of heterogeneous decomposition strategies and leverages both static and dynamic task graph constructions to incorporate computational patterns.
 
 ## Source code
 
