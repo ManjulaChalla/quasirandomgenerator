@@ -41,8 +41,20 @@ Refer [Workflow](https://www.intel.com/content/www/us/en/developer/tools/oneapi/
 
 ## Key Implementation Details
 
-This sample demonstrates the migration of the following prominent CUDA features: 
+This sample demonstrates the migration of the following prominent CUDA feature: 
 - Constant Memory
+
+## Build the `simpleCudaGraphs` Sample for CPU and GPU
+
+> **Note**: If you have not already done so, set up your CLI
+> environment by sourcing  the `setvars` script in the root of your oneAPI installation.
+>
+> Linux*:
+> - For system wide installations: `. /opt/intel/oneapi/setvars.sh`
+> - For private installations: ` . ~/intel/oneapi/setvars.sh`
+> - For non-POSIX shells, like csh, use the following command: `bash -c 'source <install-dir>/setvars.sh ; exec csh'`
+>
+> For more information on configuring environment variables, see [Use the setvars Script with Linux* or macOS*](https://www.intel.com/content/www/us/en/develop/documentation/oneapi-programming-guide/top/oneapi-development-environment-setup/use-the-setvars-script-with-linux-or-macos.html).
 
 ## Tool assisted migration – SYCLomatic 
 
