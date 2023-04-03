@@ -88,19 +88,6 @@ Since we changed the queue from in-order to out-of-order execution, it resulted 
 
 To summarise, in-order queues guarantee the order of execution of commands, while out-of-order queues allow for greater flexibility and potential performance gains but require careful synchronization management. The choice of which queue to use depends on the requirements and constraints of the application being developed.
 
-
-## Build the `QuasirandomGenerator` Sample for CPU and GPU
-
-> **Note**: If you have not already done so, set up your CLI
-> environment by sourcing  the `setvars` script in the root of your oneAPI installation.
->
-> Linux*:
-> - For system wide installations: `. /opt/intel/oneapi/setvars.sh`
-> - For private installations: ` . ~/intel/oneapi/setvars.sh`
-> - For non-POSIX shells, like csh, use the following command: `bash -c 'source <install-dir>/setvars.sh ; exec csh'`
->
-> For more information on configuring environment variables, see [Use the setvars Script with Linux* or macOS*](https://www.intel.com/content/www/us/en/develop/documentation/oneapi-programming-guide/top/oneapi-development-environment-setup/use-the-setvars-script-with-linux-or-macos.html).
-
 ### On Linux*
 
 1. Change to the sample directory.
