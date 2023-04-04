@@ -58,7 +58,7 @@ This sample demonstrates the migration of the following prominent CUDA feature:
 
 ## Tool assisted migration – SYCLomatic 
 
-For this sample, the Intel SYCLomatic Compatibility tool automatically migrates 100% of the CUDA code to SYCL. Follow these steps to generate the SYCL code using the compatibility tool:
+For this sample, the Intel® SYCLomatic Compatibility tool automatically migrates 100% of the CUDA code to SYCL. Follow these steps to generate the SYCL code using the compatibility tool:
 
 1. git clone https://github.com/NVIDIA/cuda-samples.git
 2. cd cuda-samples/Samples/5_Domain_Specific/quasirandomGenerator/
@@ -67,7 +67,7 @@ For this sample, the Intel SYCLomatic Compatibility tool automatically migrates 
    intercept-build make
    ```
 4. The above step creates a JSON file named compile_commands.json with all the compiler invocations and stores the names of the input files and the compiler options.
-5. Pass the JSON file as input to the Intel SYCLomatic Compatibility Tool. The result is written to a folder named dpct_output. The --in-root specifies path to the root of the source tree to be migrated.
+5. Pass the JSON file as input to the Intel® SYCLomatic Compatibility Tool. The result is written to a folder named dpct_output. The --in-root specifies path to the root of the source tree to be migrated.
    ```
    c2s -p compile_commands.json --in-root ../../.. --use-custom-helper=api
    ```
