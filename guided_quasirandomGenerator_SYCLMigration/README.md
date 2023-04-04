@@ -44,7 +44,7 @@ Refer [Workflow](https://www.intel.com/content/www/us/en/developer/tools/oneapi/
 This sample demonstrates the migration of the following prominent CUDA feature: 
 - Constant Memory
 
-## Build the `simpleCudaGraphs` Sample for CPU and GPU
+## Build the `QuasirandomGenerator` Sample for CPU and GPU
 
 > **Note**: If you have not already done so, set up your CLI
 > environment by sourcing  the `setvars` script in the root of your oneAPI installation.
