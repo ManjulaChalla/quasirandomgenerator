@@ -18,7 +18,7 @@ This sample contains two versions in the following folders:
 | Folder Name                   | Description
 |:---                           |:---
 | `01_dpct_output`              | Contains output of Intel® SYCLomatic Compatibility Tool used to migrate SYCL-compliant code from CUDA code. This SYCL code has some unmigrated code that has to be manually fixed to get full functionality. (The code does not functionally work as supplied.)
-| `02_sycl_migrated_optimized`            | Contains manually migrated SYCL code from CUDA code.
+| `02_sycl_migrated_optimized`            | Contains the optimized sycl code.
 
 ### Workflow For CUDA to SYCL migration
 
