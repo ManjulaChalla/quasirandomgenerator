@@ -11,7 +11,7 @@ The `QuasirandomGenerator` sample implements Niederreiter Quasirandom Sequence G
 
 The sample is based on the Niederreiter sequence, which is a type of low-discrepancy sequence that has better properties than pseudorandom sequences for certain applications, such as Monte Carlo integration.
 
-We use Intel open-sources SYCLomatic migration tool which assists developers in porting CUDA code automatically to SYCL code. To finish the process, developers complete the rest of the coding manually and then tune to the desired level of performance for the target architecture.
+ **Note**: We use Intel® open-sources SYCLomatic migration tool which assists developers in porting CUDA code automatically to SYCL code. To finish the process, developers complete the rest of the coding manually and then tune to the desired level of performance for the target architecture. User's can also use Intel® DPC++ Compatibility Tool which comes along with the Intel® oneAPI Base Toolkit.
 
 This sample contains two versions in the following folders:
 
