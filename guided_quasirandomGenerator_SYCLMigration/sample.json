@@ -2,7 +2,7 @@
   "guid": "9B936C49-3AF8-444B-865E-1395C636AE54",
   "name": "quasirandomGenerator",
   "categories": ["Toolkit/oneAPI-samples/DirectProgramming/C++SYCL/MapReduce/"],
-  "description": "Migration of simpleCudaGraphs from CUDA to SYCL, demonstrates usage of Taskflow programming model inplace of CUDA Graph API's",
+  "description": "Implements Niederreiter Quasirandom Sequence Generator and Inverse Cumulative Normal Distribution functions for the generation of Standard Normal Distributions.",
   "toolchain": [ "dpcpp" ],
   "languages": [ { "cpp": {} } ],
   "targetDevice": [ "CPU", "GPU" ],
