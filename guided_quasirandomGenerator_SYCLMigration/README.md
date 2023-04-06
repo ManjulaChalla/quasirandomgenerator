@@ -4,7 +4,7 @@ The `QuasirandomGenerator` sample implements Niederreiter Quasirandom Sequence G
 
 | Property                  | Description
 |:---                       |:---
-| What you will learn       | How to begin migrating CUDA to SYCL
+| What you will learn       | Migrating and optimizing QuasirandomGenerator from CUDA to SYCL
 | Time to complete          | 15 minutes
 
 ## Purpose
@@ -36,8 +36,8 @@ This sample is migrated from NVIDIA CUDA sample. See the [quasirandomGenerator](
 | Optimized for              | Description
 |:---                        |:---
 | OS                         | Ubuntu* 20.04
-| Hardware                   | SYCL compatible hardware
-| Software                   | open source oneAPI DPC++/C++ Compiler
+| Hardware                   | Intel® Gen9, Gen11
+| Software                   | SYCLomatic version 2023.0, Intel oneAPI Base Toolkit version 2023.0
 
 ## Key Implementation Details
 
